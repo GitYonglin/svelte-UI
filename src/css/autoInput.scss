@@ -1,0 +1,42 @@
+@import "./theme.scss";
+
+.auto-container {
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  background-color: #fff;
+  ul {
+    // transition: 3s;
+    max-height: 300px;
+    overflow: hidden;
+    position: absolute;
+    background-color: white;
+    width: 100%;
+    border: 1px solid rgba(0, 0, 0, 0);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0);
+    margin-top: -2px;
+    padding-top: 2px;
+    display: flow-root;
+    z-index: -1;
+    border-top-width: 0;
+    @include border-radius-bottom;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.09);
+    border-color: $pc-theme-border;
+    li {
+      padding: 5px;
+      &:hover,
+      &.hover {
+        background-color: $pc-theme-primary-2;
+      }
+      &.active {
+        background-color: $pc-theme-primary;
+      }
+    }
+  }
+  &:hover .input-container input {
+    border: 1px solid $pc-theme-primary !important;
+    border-right-width: 1px !important;
+    outline: 0;
+    box-shadow: 0 0 0 2px $pc-theme-primary-2;
+  }
+}

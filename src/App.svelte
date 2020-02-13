@@ -1,22 +1,52 @@
 <script lang="ts">
-  import Counter from "./Counter.svelte";
+  import { onMount } from "svelte";
+  import { menus, showName } from "./store/stores";
 
-  export let name: string;
+  import Header from "./page/Header.svelte";
+  import LeftNav from "./page/Left-nav.svelte";
+
+  import Input from "./page/Input.svelte";
+  import Form from "./page/Form.svelte";
+  import AutoInput from "./page/AutoInput.svelte";
+
+  let component = {
+    Input,
+    Form,
+    AutoInput
+  };
+
+  let the_name;
+  showName.subscribe(val => {
+    the_name = val;
+  });
+  onMount(() => {
+    let keys: Array<string> = [];
+    for (const key in component) {
+      keys.push(key);
+    }
+    menus.update(n => keys);
+  });
 </script>
 
-<style>
-  main {
-    text-align: center;
-    padding: 1em;
-    max-width: 240px;
-    margin: 0 auto;
-  }
+<style lang="scss">
+  @import "./css/theme.scss";
 
-  h1 {
-    color: #ff3e00;
-    text-transform: uppercase;
-    font-size: 4em;
-    font-weight: 100;
+  main {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    .container {
+      display: flex;
+      flex: 1;
+      nav {
+        width: 200px;
+        border-right: 1px solid $pc-theme-border;
+      }
+      .content {
+        flex: 1;
+        margin: 5px;
+      }
+    }
   }
 
   @media (min-width: 640px) {
@@ -27,11 +57,15 @@
 </style>
 
 <main>
-  <Counter />
-  <h1>Hello {name}!</h1>
-  <p>
-    Visit the
-    <a href="https://svelte.dev/tutorial">Svelte tutorial</a>
-    to learn how to build Svelte apps.
-  </p>
+  <header>
+    <Header />
+  </header>
+  <div class="container">
+    <nav>
+      <LeftNav />
+    </nav>
+    <div class="content">
+      <svelte:component this={component[the_name]} />
+    </div>
+  </div>
 </main>

@@ -1,0 +1,32 @@
+@import "./theme.scss";
+
+label {
+  display: flex;
+  flex: 1;
+  main {
+    display: flex;
+    flex-direction: column;
+    margin-left: 5px;
+    width: 100%;
+    flex: 1;
+    &.error {
+      .input input {
+        color: $pc-theme-error;
+        border-color: $pc-theme-error !important;
+
+        &:focus {
+          box-shadow: 0 0 0 2px $pc-theme-error-2;
+        }
+      }
+      .error {
+        font-size: 12px;
+        color: $pc-theme-error;
+        opacity: 1;
+      }
+    }
+    .error {
+      opacity: 0;
+    }
+  }
+  margin-bottom: 15px;
+}

@@ -1,0 +1,21 @@
+$pc-theme-bgc: #fff;
+$pc-theme-color: rgba(0, 0, 0, 0.65);
+$pc-theme-primary: #40a9ff;
+$pc-theme-error: #ec2f4b;
+$pc-theme-border: #d9d9d9;
+
+$pc-theme-primary-2: #{$pc-theme-primary}50;
+$pc-theme-error-2: #{$pc-theme-error}50;
+
+@mixin border-radius-right($size: 4px) {
+  border-top-right-radius: $size;
+  border-bottom-right-radius: $size;
+}
+@mixin border-radius-left($size: 4px) {
+  border-top-left-radius: $size;
+  border-bottom-left-radius: $size;
+}
+@mixin border-radius-bottom($size: 4px) {
+  border-bottom-left-radius: $size;
+  border-bottom-right-radius: $size;
+}

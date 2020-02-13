@@ -24,6 +24,7 @@
     "typescript": "^3.7.5"
   },
   "dependencies": {
+    "guid-typescript": "^1.0.9",
     "sirv-cli": "^0.4.4"
   }
 }
