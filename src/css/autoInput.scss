@@ -1,14 +1,15 @@
 @import "./theme.scss";
 
 .auto-container {
-  width: 100%;
-  position: relative;
-  z-index: 1;
   background-color: #fff;
+  z-index: 1;
+  &.relative {
+    width: 100%;
+    position: relative;
+  }
   ul {
-    // transition: 3s;
-    max-height: 300px;
-    overflow: hidden;
+    // max-height: 300px;
+    overflow-y: auto;
     position: absolute;
     background-color: white;
     width: 100%;
@@ -22,6 +23,14 @@
     @include border-radius-bottom;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.09);
     border-color: $pc-theme-border;
+    &.top {
+      margin-top: 0;
+      padding-bottom: 2px;
+      @include border-radius-bottom(0);
+      @include border-radius-top;
+      border-top-width: 1px;
+      border-bottom-width: 0;
+    }
     li {
       padding: 5px;
       &:hover,
@@ -30,6 +39,9 @@
       }
       &.active {
         background-color: $pc-theme-primary;
+      }
+      &.not {
+        background-color: $pc-theme-error-2;
       }
     }
   }

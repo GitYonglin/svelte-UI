@@ -19,3 +19,11 @@ $pc-theme-error-2: #{$pc-theme-error}50;
   border-bottom-left-radius: $size;
   border-bottom-right-radius: $size;
 }
+@mixin border-radius-top($size: 4px) {
+  border-top-left-radius: $size;
+  border-top-right-radius: $size;
+}
+
+$pc-them-popup-top: 20%;
+$pc-them-popup-left: 25%;
+$pc-them-popup-width: 50%;

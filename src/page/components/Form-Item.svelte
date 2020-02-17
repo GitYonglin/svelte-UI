@@ -1,7 +1,6 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import { Guid } from "guid-typescript";
-  import { createSysId } from "../../model/element-id.model";
 
   import Input from "./Input.svelte";
   /** 下边距 */
@@ -15,11 +14,11 @@
   /** 标题宽度 */
   export let titleWidth = null;
   let titleHeight = "32px";
-  let iid = createSysId();
 
   onMount(() => {
-    const input = document.getElementById(iid);
-    titleHeight = `${input.scrollHeight}px`;
+    // const input = document.getElementById(iid);
+    // titleHeight = `${input.scrollHeight}px`;
+    // console.log(titleHeight);
   });
 </script>
 
@@ -30,11 +29,11 @@
 <label style={mb ? 'margin-bottom: ' + mb : ''}>
   <span
     class="title"
-    style="height: {titleHeight}; line-height: {titleHeight}; {titleWidth ? 'width: ' + titleWidth : ''}">
+    style="height: {`${titleHeight}px`}; line-height: {`${titleHeight}px`}; {titleWidth ? 'width: ' + titleWidth : ''}">
     {title}
   </span>
-  <main class={error ? 'error' : ''}>
-    <div class="input" id={iid}>
+  <main class:error>
+    <div class="input" bind:offsetHeight={titleHeight}>
       <slot />
     </div>
     {#if showError}

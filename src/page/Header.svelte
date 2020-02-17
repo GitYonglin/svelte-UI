@@ -14,6 +14,6 @@
   }
 </style>
 
-<header>
+<header id="header">
   <h1>UI</h1>
 </header>

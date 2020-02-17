@@ -1,0 +1,53 @@
+@mixin popup($top: 20%, $left: 25%) {
+  .popup-fixed {
+    position: fixed;
+    top: $top;
+    left: $left;
+    width: 100% - 2 * $left;
+    &:after {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -2;
+      height: 100%;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #header {
+    background: #00f;
+  }
+  @include popup(10%, 5%);
+}
+
+@media screen and (min-width: 481px) and (max-width: 800px) {
+  #header {
+    background: #0f0;
+  }
+  @include popup(20%, 5%);
+}
+
+@media screen and (min-width: 801px) and (max-width: 960px) {
+  #header {
+    background: #f00;
+  }
+  @include popup(20%, 20%);
+}
+
+@media screen and (min-width: 961px) and (max-width: 1200px) {
+  #header {
+    background: #ff0;
+  }
+  @include popup(25%, 20%);
+}
+
+@media screen and (min-width: 1201px) {
+  #header {
+    background: #fff;
+  }
+  @include popup(25%, 20%);
+}
